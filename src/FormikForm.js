@@ -46,7 +46,7 @@ function FormikSample() {
         validationSchema: addProductValidationSchema,
         onSubmit: values => {
             console.log(values);
-            alert('User registered successfully')
+            alert('User registered successfully');
         }
     })
 
@@ -57,13 +57,13 @@ function FormikSample() {
                     <label htmlFor="name" className="form-label">Name</label>
                     <br />
                     <input className="form-input" id="name" name="name" type="text" onChange={formik.handleChange} value={formik.values.name} />
-                    <p style={{ color: 'red' }}>{formik.errors?.name}</p>
+                    {formik.touched.name && formik.errors?.name && <p style={{ color: 'red' }}>{formik.errors.name}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="mail" className="form-label">Mail</label>
                     <br />
                     <input className="form-input" id="mail" name="mail" type="text" onChange={formik.handleChange} value={formik.values.mail} />
-                    <p style={{ color: 'red' }}>{formik.errors?.mail}</p>
+                    {formik.touched.mail && formik.errors?.mail && <p style={{ color: 'red' }}>{formik.errors.mail}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="gender" className="form-label">Gender</label>
@@ -90,19 +90,19 @@ function FormikSample() {
                             <span className="radio-text">Male</span>
                         </label>
                     </div>
-                    <p style={{ color: 'red' }}>{formik.errors?.gender}</p>
+                    {formik.touched.gender && formik.errors?.gender && <p style={{ color: 'red' }}>{formik.errors.gender}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="password" className="form-label">Passowrd</label>
                     <br />
                     <input className="form-input" id="password" name="password" type="password" onChange={formik.handleChange} value={formik.values.password} />
-                    <p style={{ color: 'red' }}>{formik.errors?.password}</p>
+                    {formik.touched.password && formik.errors?.password && <p style={{ color: 'red' }}>{formik.errors.password}</p>}
                 </div>
                 <div className="form-group">
                     <label htmlFor="confirmPassword" className="form-label">Confirm Passowrd</label>
                     <br />
                     <input className="form-input" id="confirmPassword" name="confirmPassword" type="password" onChange={formik.handleChange} value={formik.values.confirmPassword} />
-                    <p style={{ color: 'red' }}>{formik.errors?.confirmPassword}</p>
+                    {formik.touched.confirmPassword && formik.errors?.confirmPassword && <p style={{ color: 'red' }}>{formik.errors.confirmPassword}</p>}
                 </div>
                 <div>
                     <button className="form-button" type="submit">Register</button>

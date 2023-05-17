@@ -44,9 +44,10 @@ function FormikSample() {
             confirmPassword: ''
         },
         validationSchema: addProductValidationSchema,
-        onSubmit: values => {
+        onSubmit: (values, { resetForm }) => {
             console.log(values);
             alert('User registered successfully');
+            resetForm();
         }
     })
 

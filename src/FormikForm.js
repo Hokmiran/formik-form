@@ -31,8 +31,8 @@ function FormikSample() {
             }),
 
         confirmPassword: Yup.string()
-        .required("You need to confirm your password")
-        .oneOf([Yup.ref('password')], 'Passwords do not match'),
+            .required("You need to confirm your password")
+            .oneOf([Yup.ref('password')], 'Passwords do not match'),
     })
 
     const formik = useFormik({
@@ -46,79 +46,66 @@ function FormikSample() {
         validationSchema: addProductValidationSchema,
         onSubmit: values => {
             console.log(values);
+            alert('User registered successfully')
         }
     })
 
     return (<>
         <form onSubmit={formik.handleSubmit}>
             <>
-                <div>
-                    <label htmlFor="name">Name</label>
+                <div className="form-group">
+                    <label htmlFor="name" className="form-label">Name</label>
                     <br />
-                    <br />
-                    <input id="name" name="name" type="text" onChange={formik.handleChange} value={formik.values.name} />
+                    <input className="form-input" id="name" name="name" type="text" onChange={formik.handleChange} value={formik.values.name} />
                     <p style={{ color: 'red' }}>{formik.errors?.name}</p>
-                    <br />
-                    <br />
                 </div>
-                <div>
-                    <label htmlFor="mail">Mail</label>
+                <div className="form-group">
+                    <label htmlFor="mail" className="form-label">Mail</label>
                     <br />
-                    <br />
-                    <input id="mail" name="mail" type="text" onChange={formik.handleChange} value={formik.values.mail} />
+                    <input className="form-input" id="mail" name="mail" type="text" onChange={formik.handleChange} value={formik.values.mail} />
                     <p style={{ color: 'red' }}>{formik.errors?.mail}</p>
-                    <br />
-                    <br />
                 </div>
-                <div>
-                    <label htmlFor="gender">Gender</label>
+                <div className="form-group">
+                    <label htmlFor="gender" className="form-label">Gender</label>
                     <br />
-                    <br />
-                    <label>
-                        <input
-                            type="radio"
-                            name="gender"
-                            value="female"
-                            checked={formik.values.gender === 'female'}
-                            onChange={formik.handleChange}
-                        />
-                        Female
-                    </label>
-                    <label>
-                        <input
-                            type="radio"
-                            name="gender"
-                            value="male"
-                            checked={formik.values.gender === 'male'}
-                            onChange={formik.handleChange}
-                        />
-                        Male
-                    </label>
-
+                    <div className="radio-group">
+                        <label className="radio-label">
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="female"
+                                checked={formik.values.gender === 'female'}
+                                onChange={formik.handleChange}
+                            />
+                            <span className="radio-text">Female</span>
+                        </label>
+                        <label className="radio-label">
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="male"
+                                checked={formik.values.gender === 'male'}
+                                onChange={formik.handleChange}
+                            />
+                            <span className="radio-text">Male</span>
+                        </label>
+                    </div>
                     <p style={{ color: 'red' }}>{formik.errors?.gender}</p>
-                    <br />
-                    <br />
                 </div>
-                <div>
-                    <label htmlFor="password">Passowrd</label>
+                <div className="form-group">
+                    <label htmlFor="password" className="form-label">Passowrd</label>
                     <br />
-                    <br />
-                    <input id="password" name="password" type="password" onChange={formik.handleChange} value={formik.values.password} />
+                    <input className="form-input" id="password" name="password" type="password" onChange={formik.handleChange} value={formik.values.password} />
                     <p style={{ color: 'red' }}>{formik.errors?.password}</p>
-                    <br />
-                    <br />
                 </div>
-                <div>
-                    <label htmlFor="confirmPassword">Confirm Passowrd</label>
+                <div className="form-group">
+                    <label htmlFor="confirmPassword" className="form-label">Confirm Passowrd</label>
                     <br />
-                    <br />
-                    <input id="confirmPassword" name="confirmPassword" type="password" onChange={formik.handleChange} value={formik.values.confirmPassword} />
+                    <input className="form-input" id="confirmPassword" name="confirmPassword" type="password" onChange={formik.handleChange} value={formik.values.confirmPassword} />
                     <p style={{ color: 'red' }}>{formik.errors?.confirmPassword}</p>
-                    <br />
-                    <br />
                 </div>
                 <div>
-                    <button style={{ cursor: 'pointer' }} type="submit">Submit</button>
+                    <button className="form-button" type="submit">Register</button>
                 </div>
             </>
 
